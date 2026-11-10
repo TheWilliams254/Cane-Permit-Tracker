@@ -1,0 +1,9 @@
+{
+  "name": "Cane Permit Tracker",
+  "short_name": "Permits",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F8F7",
+  "theme_color": "#163A21",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

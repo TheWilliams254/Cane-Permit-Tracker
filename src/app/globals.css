@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  @apply bg-stone-50 text-ink font-sans antialiased;
+  font-feature-settings: "tnum" 1, "kern" 1;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 3px solid theme("colors.sugar.500");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  button, [role="button"] { touch-action: manipulation; }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+}
+
+@layer components {
+  .field-input {
+    @apply block w-full rounded-md border border-stone-300 bg-white px-3 py-2.5 text-[16px] leading-6 text-ink placeholder:text-stone-500/70 focus:border-cane-500 focus:ring-0 disabled:bg-stone-100 disabled:text-stone-500;
+    min-height: 44px;
+  }
+  .field-input[aria-invalid="true"] { @apply border-danger; }
+  .panel { @apply bg-white border border-stone-200 rounded-lg; }
+  .hairline { @apply border-t border-stone-200; }
+  .table-base { @apply w-full text-sm; }
+  .table-base th { @apply text-left font-medium text-stone-700 py-2.5 px-3 border-b border-stone-200 whitespace-nowrap; }
+  .table-base td { @apply py-2.5 px-3 border-b border-stone-100 align-top; }
+  .table-base tr:last-child td { @apply border-b-0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Leaflet containers inherit the app font; keep controls touch-friendly. */
+.leaflet-container { font-family: inherit; }
+.leaflet-touch .leaflet-bar a { width: 40px; height: 40px; line-height: 40px; }

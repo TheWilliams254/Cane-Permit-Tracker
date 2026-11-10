@@ -1,0 +1,127 @@
+[
+  {
+    "code": "3",
+    "name": "ABSA BANK KENYA PLC",
+    "accountLength": 10
+  },
+  {
+    "code": "26",
+    "name": "Access Bank Kenya PLC",
+    "accountLength": 13
+  },
+  {
+    "code": "35",
+    "name": "African Banking Corporation Limited",
+    "accountLength": 15
+  },
+  {
+    "code": "19",
+    "name": "Bank of Africa Kenya Limited",
+    "accountLength": 10
+  },
+  {
+    "code": "6",
+    "name": "BANK OF BARODA(KENYA LTD)",
+    "accountLength": 14
+  },
+  {
+    "code": "23",
+    "name": "Consolidated Bank of Kenya Ltd",
+    "accountLength": 12
+  },
+  {
+    "code": "11",
+    "name": "COOPERATIVE BANK",
+    "accountLength": 14
+  },
+  {
+    "code": "63",
+    "name": "DIAMOND TRUST BANK KENYA LIMITED",
+    "accountLength": 10
+  },
+  {
+    "code": "68",
+    "name": "EQUITY BANK KENYA LTD",
+    "accountLength": 13
+  },
+  {
+    "code": "70",
+    "name": "FAMILY BANK",
+    "accountLength": 12
+  },
+  {
+    "code": "55",
+    "name": "GUARDIAN BANK",
+    "accountLength": 10
+  },
+  {
+    "code": "61",
+    "name": "HFC GROUP/BANK",
+    "accountLength": 12
+  },
+  {
+    "code": "57",
+    "name": "I&M BANK",
+    "accountLength": 14
+  },
+  {
+    "code": "1",
+    "name": "KENYA COMMERCIAL BANK LIMITED (KCB)",
+    "accountLength": 10
+  },
+  {
+    "code": "62",
+    "name": "Kenya Post Office Savings Bank",
+    "accountLength": 13
+  },
+  {
+    "code": "51",
+    "name": "Kingdom Bank Limited",
+    "accountLength": 13
+  },
+  {
+    "code": "12",
+    "name": "National Bank",
+    "accountLength": 11
+  },
+  {
+    "code": "12",
+    "name": "NATIONAL BANK OF KENYA",
+    "accountLength": 14
+  },
+  {
+    "code": "12",
+    "name": "NATIONAL BANK OF KENYA-2",
+    "accountLength": 10
+  },
+  {
+    "code": "12",
+    "name": "NATIONAL BANK OF KENYA-3",
+    "accountLength": 13
+  },
+  {
+    "code": "7",
+    "name": "NCBA",
+    "accountLength": 10
+  },
+  {
+    "code": "60",
+    "name": "SBM Bank",
+    "accountLength": 13
+  },
+  {
+    "code": "66",
+    "name": "Sidian Bank Limited",
+    "accountLength": 14
+  },
+  {
+    "code": "31",
+    "name": "STANBIC BANK PLC",
+    "accountLength": 13
+  },
+  {
+    "code": "2",
+    "name": "STANDARD CHARTERED BANK KENYA LTD",
+    "accountLength": 13
+  }
+]

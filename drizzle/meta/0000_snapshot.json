@@ -1,0 +1,946 @@
+{
+  "id": "a2b1ffac-533a-4809-a78a-78e4b00aa85e",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.banks": {
+      "name": "banks",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "account_length": {
+          "name": "account_length",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.cbcs": {
+      "name": "cbcs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lat": {
+          "name": "lat",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lng": {
+          "name": "lng",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "cbcs_name_unique": {
+          "name": "cbcs_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.counters": {
+      "name": "counters",
+      "schema": "",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.entries": {
+      "name": "entries",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "reference": {
+          "name": "reference",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "entry_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'SUBMITTED'"
+        },
+        "scout_id": {
+          "name": "scout_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "farmer_name": {
+          "name": "farmer_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "farmer_phone": {
+          "name": "farmer_phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "farmer_id_number": {
+          "name": "farmer_id_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plot_lr_no": {
+          "name": "plot_lr_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estimated_acres": {
+          "name": "estimated_acres",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estimated_trips": {
+          "name": "estimated_trips",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sublocation": {
+          "name": "sublocation",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "area": {
+          "name": "area",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "delivery_cbc_id": {
+          "name": "delivery_cbc_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "harvester_id": {
+          "name": "harvester_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "polygon": {
+          "name": "polygon",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "centroid_lat": {
+          "name": "centroid_lat",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "centroid_lng": {
+          "name": "centroid_lng",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "polygon_acres": {
+          "name": "polygon_acres",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "polygon_hectares": {
+          "name": "polygon_hectares",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nearest_cbc_id": {
+          "name": "nearest_cbc_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "distance_km": {
+          "name": "distance_km",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "zone": {
+          "name": "zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gis_zone": {
+          "name": "gis_zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gis_cbc_id": {
+          "name": "gis_cbc_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gis_distance_km": {
+          "name": "gis_distance_km",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gis_field_inspected": {
+          "name": "gis_field_inspected",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gis_polygon_reviewed": {
+          "name": "gis_polygon_reviewed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bank_id": {
+          "name": "bank_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bank_code": {
+          "name": "bank_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bank_name": {
+          "name": "bank_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "account_number": {
+          "name": "account_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "account_name": {
+          "name": "account_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "branch": {
+          "name": "branch",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bank_card_photo_url": {
+          "name": "bank_card_photo_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_front_url": {
+          "name": "id_front_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_back_url": {
+          "name": "id_back_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "farmer_photo_url": {
+          "name": "farmer_photo_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "signature_url": {
+          "name": "signature_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "terms_version": {
+          "name": "terms_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "terms_accepted_at": {
+          "name": "terms_accepted_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_consent_version": {
+          "name": "data_consent_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_consent_at": {
+          "name": "data_consent_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "call_center_confirmed_at": {
+          "name": "call_center_confirmed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "call_center_checks": {
+          "name": "call_center_checks",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "call_attempts": {
+          "name": "call_attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "data_checked_at": {
+          "name": "data_checked_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "legal_docs_received_at": {
+          "name": "legal_docs_received_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "legal_docs_checklist": {
+          "name": "legal_docs_checklist",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "legal_file_ref": {
+          "name": "legal_file_ref",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "erp_farmer_code": {
+          "name": "erp_farmer_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "erp_field_code": {
+          "name": "erp_field_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "erp_posted_at": {
+          "name": "erp_posted_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "permit_number": {
+          "name": "permit_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ccs_clips": {
+          "name": "ccs_clips",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "permit_issued_at": {
+          "name": "permit_issued_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "zoned_at": {
+          "name": "zoned_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "return_reason": {
+          "name": "return_reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "entries_status_idx": {
+          "name": "entries_status_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "entries_scout_idx": {
+          "name": "entries_scout_idx",
+          "columns": [
+            {
+              "expression": "scout_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "entries_created_idx": {
+          "name": "entries_created_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "entries_scout_id_users_id_fk": {
+          "name": "entries_scout_id_users_id_fk",
+          "tableFrom": "entries",
+          "tableTo": "users",
+          "columnsFrom": [
+            "scout_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "entries_delivery_cbc_id_cbcs_id_fk": {
+          "name": "entries_delivery_cbc_id_cbcs_id_fk",
+          "tableFrom": "entries",
+          "tableTo": "cbcs",
+          "columnsFrom": [
+            "delivery_cbc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "entries_harvester_id_harvesters_id_fk": {
+          "name": "entries_harvester_id_harvesters_id_fk",
+          "tableFrom": "entries",
+          "tableTo": "harvesters",
+          "columnsFrom": [
+            "harvester_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "entries_nearest_cbc_id_cbcs_id_fk": {
+          "name": "entries_nearest_cbc_id_cbcs_id_fk",
+          "tableFrom": "entries",
+          "tableTo": "cbcs",
+          "columnsFrom": [
+            "nearest_cbc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "entries_gis_cbc_id_cbcs_id_fk": {
+          "name": "entries_gis_cbc_id_cbcs_id_fk",
+          "tableFrom": "entries",
+          "tableTo": "cbcs",
+          "columnsFrom": [
+            "gis_cbc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "entries_bank_id_banks_id_fk": {
+          "name": "entries_bank_id_banks_id_fk",
+          "tableFrom": "entries",
+          "tableTo": "banks",
+          "columnsFrom": [
+            "bank_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "entries_reference_unique": {
+          "name": "entries_reference_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "reference"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.entry_events": {
+      "name": "entry_events",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "entry_id": {
+          "name": "entry_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "actor_id": {
+          "name": "actor_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "from_status": {
+          "name": "from_status",
+          "type": "entry_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "to_status": {
+          "name": "to_status",
+          "type": "entry_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "events_entry_idx": {
+          "name": "events_entry_idx",
+          "columns": [
+            {
+              "expression": "entry_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "events_actor_idx": {
+          "name": "events_actor_idx",
+          "columns": [
+            {
+              "expression": "actor_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "entry_events_entry_id_entries_id_fk": {
+          "name": "entry_events_entry_id_entries_id_fk",
+          "tableFrom": "entry_events",
+          "tableTo": "entries",
+          "columnsFrom": [
+            "entry_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "entry_events_actor_id_users_id_fk": {
+          "name": "entry_events_actor_id_users_id_fk",
+          "tableFrom": "entry_events",
+          "tableTo": "users",
+          "columnsFrom": [
+            "actor_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.harvesters": {
+      "name": "harvesters",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone": {
+          "name": "phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_number": {
+          "name": "id_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "harvesters_code_unique": {
+          "name": "harvesters_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "code"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "username": {
+          "name": "username",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone": {
+          "name": "phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "must_change_password": {
+          "name": "must_change_password",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "last_login_at": {
+          "name": "last_login_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_username_unique": {
+          "name": "users_username_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "username"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "ADMIN",
+        "SCOUT",
+        "CALL_CENTER",
+        "IT_CHECKER",
+        "LEGAL",
+        "PERMIT_OFFICER",
+        "GIS_OFFICER"
+      ]
+    },
+    "public.entry_status": {
+      "name": "entry_status",
+      "schema": "public",
+      "values": [
+        "SUBMITTED",
+        "FARMER_CONFIRMED",
+        "DATA_CHECKED",
+        "DOCS_RECEIVED",
+        "ERP_POSTED",
+        "PERMIT_ISSUED",
+        "ZONED",
+        "RETURNED",
+        "REJECTED"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
