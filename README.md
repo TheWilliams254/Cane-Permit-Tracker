@@ -125,3 +125,5 @@ data/                    CBC, harvester and bank seed data from the November 202
 - Photos and signatures go to Vercel Blob with unguessable URLs (random suffix). They are not listed anywhere public, but anyone holding a URL can open it. If policy requires the files themselves to sit behind sign-in, the upload route (`src/app/api/upload/route.ts`) is the one place to swap in a private store and a download endpoint.
 - Every status change is recorded in `entry_events` with who did it and when. Entries are never deleted from the app; rejected entries stay in the record.
 - ID numbers, phone numbers and account numbers are stored as text so leading zeros survive the CSV export.
+
+##@COPYWRITE
